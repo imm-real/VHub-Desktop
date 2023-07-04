@@ -6,17 +6,6 @@ local RunService = game:GetService("RunService")
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
 
-function slider:IsInBounds()
-	local Frame = self.Frame
-
-	local X, Y = Mouse.X - Frame.AbsolutePosition.X, Mouse.Y - Frame.AbsolutePosition.Y
-	local MaxX, MaxY = Frame.AbsoluteSize.X, Frame.AbsoluteSize.Y
-
-	if (X >= 0 and X <= MaxX) and (Y >= 0 and Y <= MaxY) then
-		return X/MaxX, Y/MaxY
-	end
-end
-
 function slider:GetOffset()
 	local Frame = self.Frame
 
@@ -82,13 +71,13 @@ function slider:Init(SliderFrame, Max, Min)
 	Mouse.Move:Connect(function()
 		self:UpdateSlider()
 	end)
-	Mouse.Button1Down:Connect(function()
-		if self:IsInBounds() then
-			self.MouseDown = true
-		end
-	end)
-	Mouse.Button1Up:Connect(function()
-		self.MouseDown = false
+	self.Frame.InputBegan:Connect(function(Input)
+		if Input.UserInputType == Enum.UserInputType.MouseButton1 then return end
+		self.MouseDown = true
+		Input.Changed:Connect(function()
+			if Input.UserInputState == Enum.UserInputState.End then return end
+			self.MouseDown = false
+		end)
 	end)
 	return setmetatable(self, slider)
 end
