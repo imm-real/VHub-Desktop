@@ -1,59 +1,96 @@
-local smoothdrag = {}
-smoothdrag.__index = smoothdrag
+local slider = {}
+slider.__index = slider
 
 local RunService = game:GetService("RunService")
 
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
 
-function smoothdrag:IsInBounds()
+function slider:IsInBounds()
 	local Frame = self.Frame
 
 	local X, Y = Mouse.X - Frame.AbsolutePosition.X, Mouse.Y - Frame.AbsolutePosition.Y
 	local MaxX, MaxY = Frame.AbsoluteSize.X, Frame.AbsoluteSize.Y
 
 	if (X >= 0 and X <= MaxX) and (Y >= 0 and Y <= MaxY) then
-		return true
+		return X/MaxX, Y/MaxY
 	end
-	return false
 end
 
-function smoothdrag:GetOffset()
+function slider:GetOffset()
 	local Frame = self.Frame
 
-	local X, Y = Mouse.X - Frame.Position.X.Offset, Mouse.Y - Frame.Position.Y.Offset
+	local X, Y = Mouse.X - Frame.AbsolutePosition.X, Mouse.Y - Frame.AbsolutePosition.Y
+	local MaxX, MaxY = Frame.AbsoluteSize.X, Frame.AbsoluteSize.Y
 
-	return X, Y
+	return math.clamp(X/MaxX, 0, 1), math.clamp(Y/MaxY, 0, 1)
 end
 
-function smoothdrag:Update()
+function slider:Fire(Value)
+	if not self._func then return end
+
+	self._func(math.floor(self.Min+(self.Diff*Value)))
+end
+
+function slider:Connect(func)
+	self._func = func
+end
+
+function slider:UpdateGradient(Value)
+	local Frame = self.Frame
+
+	if Value <= 0.01 then
+		Frame.Bar.UIGradient.Transparency = NumberSequence.new(1, 1)
+		return
+	end
+	if Value >= 1 then
+		Frame.Bar.UIGradient.Transparency = NumberSequence.new(0, 0)
+		return
+	end
+	Frame.Bar.UIGradient.Transparency = NumberSequence.new {
+		NumberSequenceKeypoint.new(0, 0),
+		NumberSequenceKeypoint.new(Value-0.01, 0),
+		NumberSequenceKeypoint.new(Value, 1),
+		NumberSequenceKeypoint.new(1, 1)
+	}
+end
+
+function slider:Set(value)
+	local Frame = self.Frame
+
+	Frame.Point.Position = UDim2.fromScale(value, 0.5)
+	self:UpdateGradient(value)
+end
+
+function slider:UpdateSlider()
 	if not self.MouseDown then return end
 
-	local Frame = self.Frame
-	Frame.Position = UDim2.fromOffset(Mouse.X - self.Offset.X.Offset, Mouse.Y - self.Offset.Y.Offset)
+	local Value = self:GetOffset()
+	self:Set(Value)
+	self:Fire(Value)
 end
 
-function smoothdrag:Init(Frame)
+function slider:Init(SliderFrame, Max, Min)
 	self = {
 		MouseDown = false,
-		Frame = Frame,
-		Offset = nil
+		Frame = SliderFrame.Bar,
+		Max = Max,
+		Min = Min,
+		Diff = Max-Min,
+		_func = nil
 	}
 	Mouse.Move:Connect(function()
-		self:Update()
+		self:UpdateSlider()
 	end)
 	Mouse.Button1Down:Connect(function()
-		local in_bounds = self:IsInBounds()
-		if in_bounds then
-			local x, y = self:GetOffset()
-			self.Offset = UDim2.fromOffset(x, y)
+		if self:IsInBounds() then
 			self.MouseDown = true
 		end
 	end)
 	Mouse.Button1Up:Connect(function()
 		self.MouseDown = false
 	end)
-	return setmetatable(self, smoothdrag)
+	return setmetatable(self, slider)
 end
 
-return smoothdrag
+return slider
