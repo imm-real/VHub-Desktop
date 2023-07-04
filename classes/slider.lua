@@ -71,7 +71,7 @@ function slider:UpdateSlider()
 	self:Fire(Value)
 end
 
-function slider:New(SliderFrame, Max, Min)
+function slider:Init(SliderFrame, Max, Min)
 	self = {
 		MouseDown = false,
 		Frame = SliderFrame.Bar,
