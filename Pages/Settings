@@ -46,11 +46,13 @@ local Theme = Option:New('Theme', function(Value)
 	return false
 end)
 Theme:Load()
+print(Theme)
 
 for _, Button in pairs(Settings.Themes:GetChildren()) do
 	if not Button:IsA('Button') then continue end
 	
 	Button.Activated:Connect(function()
+		print('Activated')
 		Theme:Set(Button.Name)
 	end)
 end
