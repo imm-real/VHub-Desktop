@@ -18,7 +18,7 @@ function option:Set(Value)
 	if not self.func(Value) then return end
 
 	_G.Vhub.Options[self.name] = Value
-	option:Save(Value)
+	self:Save(Value)
 end
 
 function option:Save(Value)
