@@ -70,8 +70,8 @@ Home.GameInfo.JobId.Text = game.JobId
 Home.UserInfo.Avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(Player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
 Home.UserInfo.NameLabel.Text = Player.Name
 
-Services.RunService.RenderStepped:Connect(function()
-	if not _G.Vhub then return end
+Event = Services.RunService.RenderStepped:Connect(function()
+	if not _G.Vhub then Event:Disconnect() return end
 	local Character = Player.Character
 	if Character ~= nil then
 		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
