@@ -40,19 +40,17 @@ end)
 DragSpeed:Load()
 
 local Theme = Option:New('Theme', function(Value)
-	print(Value)
 	if Value == 'Red' or Value == 'Yellow' or Value == 'Green' or Value == 'Blue' then
 		return true
 	end
 	return false
 end)
 Theme:Load()
-print(Theme)
 
 for _, Button in pairs(Settings.Themes:GetChildren()) do
-	if not Button:IsA('Button') then continue end
-	
-	Button.Activated:Connect(function()
+	if not Button:IsA('Button') then print(Button) continue end
+
+	Button.MouseButton1Click:Connect(function()
 		Theme:Set(Button.Name)
 	end)
 end
