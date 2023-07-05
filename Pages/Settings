@@ -39,6 +39,22 @@ local DragSpeed = Option:New('DragSpeed', function(Value)
 end)
 DragSpeed:Load()
 
+local Theme = Option:New('Theme', function(Value)
+	if Value == 'Red' or Value == 'Yellow' or Value == 'Green' or Value == 'Blue' then
+		return true
+	end
+	return false
+end)
+Theme:Load()
+
+for _, Button in pairs(Settings.Themes) do
+	if not Button:IsA('Button') then continue end
+	
+	Button.Activated:Connect(function()
+		Theme:Set(Button.Name)
+	end)
+end
+
 local DragSlider = Slider:New(Settings.DragSpeed, 35, 8)
 DragSlider:Set((Vhub.Options.DragSpeed-8)/35)
 Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
@@ -46,3 +62,4 @@ DragSlider:OnRelease(function(Value)
 	DragSpeed:Set(Value)
 	Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
 end)
+
