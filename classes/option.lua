@@ -8,7 +8,7 @@ local Services = {
 function option:Save(Value)
 	local Options = {}
 	if isfile('vhub_options.json') then
-		Options = Services.HttpService:JSONDecode(readfile('vhub_options.json'))
+		Options = Services.HttpService:JSONDecode(readfile('vhub_options.vh'))
 	end
 	
 	Options[self.option] = Value
