@@ -71,7 +71,7 @@ function slider:UpdateSlider()
 	self:Fire(Value)
 end
 
-function slider:Init(SliderFrame, Max, Min)
+function slider:New(SliderFrame, Max, Min)
 	self = {
 		MouseDown = false,
 		Frame = SliderFrame.Bar,
@@ -94,7 +94,8 @@ function slider:Init(SliderFrame, Max, Min)
 
 		self.MouseDown = false
 	end)
-	return setmetatable(self, slider)
+	setmetatable(self, slider)
+	return self
 end
 
 return slider
