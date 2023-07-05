@@ -1,4 +1,5 @@
 local option = {}
+option.__index = option
 
 local Services = {
 	HttpService = game:GetService('HttpService')
@@ -14,7 +15,6 @@ function option:Load()
 end
 
 function option:Set(Value)
-	print(self.func, self.name)
 	if not self.func(Value) then return end
 
 	_G.Vhub.Options[self.name] = Value
@@ -37,7 +37,7 @@ function option:New(Name, CheckFunction)
 		func = CheckFunction
 	}
 	setmetatable(self, option)
-	option.__index = option
+	self.Load()
 	return self
 end
 
