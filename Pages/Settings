@@ -30,3 +30,19 @@ SettingsButton.Activated:Connect(function()
 		):Play()
 	end
 end)
+
+local DragSpeed = Option:New('DragSpeed', function(Value)
+	if Value >= 8 and Value <= 35 then
+		return true
+	end
+	return false
+end)
+DragSpeed:Load()
+
+local DragSlider = Slider:New(Settings.DragSpeed, 35, 8)
+DragSlider:Set((Vhub.Options.DragSpeed-8)/35)
+DragSlider.Text.Text = Vhub.Options.DragSpeed
+DragSlider:Connect(function(Value)
+	DragSpeed:Set(Value)
+	DragSlider.Text.Text = Vhub.Options.Value
+end)
