@@ -1,4 +1,5 @@
 local option = {}
+option.__index = option
 
 local Services = {
 	HttpService = game:GetService('HttpService')
