@@ -1,199 +1,65 @@
-if _G.Vhub then
-	return
-end
+local Vhub = _G.Vhub
 
-function Load(Link)
-	return loadstring(game:HttpGet(Link))()
-end
+local Option = Vhub.Libs.Option
+local Slider = Vhub.Libs.Slider
+local Gui = Vhub.Gui
 
-function Setup()
-	_G.Vhub = {
-		Gui = Load('https://raw.githubusercontent.com/MichaelScripter/VHub-Desktop/main/gui.lua'),
-		Player = game:GetService('Players').LocalPlayer,
-		Libs = {
-			Slider = Load('https://raw.githubusercontent.com/MichaelScripter/VHub-Desktop/main/classes/slider.lua'),
-			Option = Load('https://raw.githubusercontent.com/MichaelScripter/VHub-Desktop/main/classes/option.lua')
-		},
-		Options = {
-			DragSpeed = 8,
-			Theme = 'Red'
-		}
-	}
-end
+local Settings = Gui.DragFrame.Settings
+local SettingsButton = Gui.DragFrame.Frame.Main.Title.Settings
 
 local Services = {
-	TweenService = game:GetService('TweenService'),
-	RunService = game:GetService('RunService'),
-	Players = game:GetService('Players'),
-	CoreGui = game:GetService('CoreGui'),
-	UserInputService = game:GetService('UserInputService')
+	TweenService = game:GetService('TweenService')
 }
 
-Setup()
+local Active = false
 
-Vhub = _G.Vhub
-
-local Player = Vhub.Player
-local Gui = Vhub.Gui
-Gui.Parent = Services.CoreGui
-
-local ActivateButton = Gui.ActivateButton
-local DragFrame = Gui.DragFrame
-local Frame = DragFrame.Frame.Main
-local Buttons = Frame.Buttons
-local Pages = Frame.Pages
-local Title = Frame.Title
-
-ActivateButton.Activated:Connect(function()
-	DragFrame.Visible = true
-	ActivateButton.Visible = false
+SettingsButton.Activated:Connect(function()
+	Active = not Active
+	Settings.Visible = Active
+	if Active then
+		Services.TweenService:Create(
+			SettingsButton.Fill, 
+			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
+			{ImageTransparency = 0}
+		):Play()
+	else
+		Services.TweenService:Create(
+			SettingsButton.Fill, 
+			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
+			{ImageTransparency = 1}
+		):Play()
+	end
 end)
 
-Title.Close.Activated:Connect(function()
-	ActivateButton.Position = DragFrame.Position + UDim2.fromOffset((DragFrame.Size.X.Offset - 30), 0)
-	ActivateButton.Visible = true
-	DragFrame.Visible = false
+local DragSpeed = Option:New('DragSpeed', function(Value)
+	if Value >= 8 and Value <= 35 then
+		return true
+	end
+	return false
 end)
+DragSpeed:Load()
 
-DragFrame.Position = UDim2.new(0, 50, 0, 50)
-
-function Drag(Drag)
-	local gui = Drag
-
-	local dragging
-	local dragInput
-	local dragStart
-	local startPos
-
-	function Lerp(a, b, m)
-		return a + (b - a) * m
-	end;
-
-	local lastMousePos
-	local lastGoalPos
-	local DRAG_SPEED = Vhub.Options.DragSpeed
-	function Update(dt)
-		if not _G.Vhub then return end
-		if not (startPos) then return end;
-		if not (dragging) and (lastGoalPos) then
-			gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, lastGoalPos.X.Offset, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, lastGoalPos.Y.Offset, dt * DRAG_SPEED))
-			return 
-		end;
-
-		local delta = (lastMousePos - Services.UserInputService:GetMouseLocation())
-		local xGoal = (startPos.X.Offset - delta.X);
-		local yGoal = (startPos.Y.Offset - delta.Y);
-		lastGoalPos = UDim2.new(startPos.X.Scale, xGoal, startPos.Y.Scale, yGoal)
-		gui.Position = UDim2.new(startPos.X.Scale, Lerp(gui.Position.X.Offset, xGoal, dt * DRAG_SPEED), startPos.Y.Scale, Lerp(gui.Position.Y.Offset, yGoal, dt * DRAG_SPEED))
+local Theme = Option:New('Theme', function(Value)
+	if Value == 'Red' or Value == 'Yellow' or Value == 'Green' or Value == 'Blue' then
+		return true
 	end
+	return false
+end)
+Theme:Load()
 
-	gui.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = gui.Position
-			lastMousePos = Services.UserInputService:GetMouseLocation()
-
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-
-	gui.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-
-	Services.RunService.Heartbeat:Connect(Update)
-end
-
-local ButtonSettings = {
-	[true] = {
-		BackgroundColor = Color3.fromRGB(204, 64, 64),
-		StrokeColor = Color3.fromRGB(204, 64, 64)
-	},
-	[false] = {
-		BackgroundColor = Color3.fromRGB(25, 25, 25),
-		StrokeColor = Color3.fromRGB(80, 80, 80)
-	}
-}
-
-local SelectedButton = Buttons.Home
-
-function AnimateButtton(Button)
-	Services.TweenService:Create(SelectedButton, TweenInfo.new(0.25), {BackgroundColor3 = ButtonSettings[false].BackgroundColor}):Play()
-	Services.TweenService:Create(SelectedButton.UIStroke, TweenInfo.new(0.25), {Color = ButtonSettings[false].StrokeColor}):Play()
-	Services.TweenService:Create(SelectedButton.Icon.Filled, TweenInfo.new(0.25), {ImageTransparency = 1}):Play()
-
-	SelectedButton = Button
-
-	Services.TweenService:Create(SelectedButton, TweenInfo.new(0.25), {BackgroundColor3 = ButtonSettings[true].BackgroundColor}):Play()
-	Services.TweenService:Create(SelectedButton.UIStroke, TweenInfo.new(0.25), {Color = ButtonSettings[true].StrokeColor}):Play()
-	Services.TweenService:Create(SelectedButton.Icon.Filled, TweenInfo.new(0.25), {ImageTransparency = 0}):Play()
-end
-
-for _, Button in pairs(Buttons:GetChildren()) do
-	if not Button:IsA("TextButton") then
-		continue
-	end
-
+for _, Button in pairs(Settings.Themes:GetChildren()) do
+	if not Button:IsA('Button') then continue end
+	
 	Button.Activated:Connect(function()
-		AnimateButtton(Button)
-		Frame.Title.PageName.Text = Button.Name
-		if Pages:FindFirstChild(Button.Name) then
-			Pages.UIPageLayout:JumpTo(Pages:FindFirstChild(Button.Name))
-		end
+		Theme:Set(Button.Name)
 	end)
 end
 
-function ChangeTheme(ThemeColor)
-	for _, Obj in pairs(Gui:GetDescendants()) do
-		if Obj.Name == 'Line' then
-			Obj.BackgroundColor3 = ThemeColor
-		end
-		if Obj:IsA("UIGradient") then
-			Obj.Color = ColorSequence.new(ThemeColor)
-		end
-	end
-	SelectedButton.BackgroundColor3 = ThemeColor
-	SelectedButton.UIStroke.Color = ThemeColor
-	ButtonSettings[true] = {
-		BackgroundColor = ThemeColor,
-		StrokeColor = ThemeColor
-	}
-end
+local DragSlider = Slider:New(Settings.DragSpeed, 35, 8)
+DragSlider:Set((Vhub.Options.DragSpeed-8)/35)
+Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
+DragSlider:OnRelease(function(Value)
+	DragSpeed:Set(Value)
+	Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
+end)
 
-local CurrentTheme = 'Red'
-local Themes = {
-	Red = Color3.fromRGB(204, 64, 64),
-	Yellow = Color3.fromRGB(255, 232, 57),
-	Green = Color3.fromRGB(74, 255, 74),
-	Blue = Color3.fromRGB(52, 157, 255)
-}
-
-function Init()
-	Drag(DragFrame)
-
-	local Pages = {
-		'Home',
-		'Settings'
-	}
-
-	for _, Page in next, Pages do
-		Load('https://raw.githubusercontent.com/MichaelScripter/VHub-Desktop/main/Pages/' .. Page)
-	end
-end
-
-Init()
-
-while task.wait(0.1) do
-	if not _G.Vhub then return end
-	if Vhub.Options.Theme ~= CurrentTheme then
-		ChangeTheme(Themes[Vhub.Options.Theme])
-		CurrentTheme = Vhub.Options.Theme
-	end
-end
