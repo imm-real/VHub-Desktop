@@ -33,8 +33,18 @@ function slider:Fire(Value)
 	self._func(math.floor(self.Min+(self.Diff*Value)))
 end
 
+function slider:FireRelease(Value)
+	if not self._release then return end
+
+	self._release(math.floor(self.Min+(self.Diff*Value)))
+end
+
 function slider:Connect(func)
 	self._func = func
+end
+
+function slider:OnRelease(func)
+	self._release = func
 end
 
 function slider:UpdateGradient(Value)
@@ -78,7 +88,8 @@ function slider:New(SliderFrame, Max, Min)
 		Max = Max,
 		Min = Min,
 		Diff = Max-Min,
-		_func = nil
+		_func = nil,
+		_release = nil
 	}
 	Mouse.Move:Connect(function()
 		self:UpdateSlider()
@@ -93,6 +104,7 @@ function slider:New(SliderFrame, Max, Min)
 		if not (Input.UserInputType == Enum.UserInputType.MouseButton1) then return end
 
 		self.MouseDown = false
+		self:FireRelease(self:GetOffset())
 	end)
 	setmetatable(self, slider)
 	return self
