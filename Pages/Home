@@ -1,65 +1,84 @@
 local Vhub = _G.Vhub
 
-local Option = Vhub.Libs.Option
-local Slider = Vhub.Libs.Slider
 local Gui = Vhub.Gui
+local Player = Vhub.Player
+local Slider = Vhub.Libs.Slider
 
-local Settings = Gui.DragFrame.Settings
-local SettingsButton = Gui.DragFrame.Frame.Main.Title.Settings
+local Home = Gui.DragFrame.Frame.Main.Pages.Home
 
 local Services = {
-	TweenService = game:GetService('TweenService')
+	RunService = game:GetService('RunService')
 }
 
-local Active = false
+local Speed = 16
+local JumpPower = 50
 
-SettingsButton.Activated:Connect(function()
-	Active = not Active
-	Settings.Visible = Active
-	if Active then
-		Services.TweenService:Create(
-			SettingsButton.Fill, 
-			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
-			{ImageTransparency = 0}
-		):Play()
+local SpeedSlider = Home.Sliders.Speed
+local speedslider = Slider:New(SpeedSlider, 160, 0)
+speedslider:Connect(function(Value)
+	SpeedSlider.Text.Text = Value
+	Speed = Value
+end)
+SpeedSlider.Text.FocusLost:Connect(function()
+	if tonumber(SpeedSlider.Text.Text) then
+		Speed = tonumber(SpeedSlider.Text.Text)
+		SpeedSlider.Text.Text = Speed
+		speedslider:Set(math.clamp(Speed/160, 0, 1))
 	else
-		Services.TweenService:Create(
-			SettingsButton.Fill, 
-			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
-			{ImageTransparency = 1}
-		):Play()
+		SpeedSlider.Text.Text = Speed
 	end
 end)
 
-local DragSpeed = Option:New('DragSpeed', function(Value)
-	if Value >= 8 and Value <= 35 then
-		return true
+local JumpSlider = Home.Sliders.JumpPower
+local jumpslider = Slider:New(JumpSlider, 500, 0)
+jumpslider:Connect(function(Value)
+	JumpSlider.Text.Text = Value
+	JumpPower = Value
+end)
+JumpSlider.Text.FocusLost:Connect(function()
+	if tonumber(JumpSlider.Text.Text) then
+		JumpPower = tonumber(JumpSlider.Text.Text)
+		JumpSlider.Text.Text = JumpPower
+		jumpslider:Set(math.clamp(JumpPower/500, 0, 1))
+	else
+		JumpSlider.Text.Text = JumpPower
 	end
-	return false
 end)
-DragSpeed:Load()
 
-local Theme = Option:New('Theme', function(Value)
-	if Value == 'Red' or Value == 'Yellow' or Value == 'Green' or Value == 'Blue' then
-		return true
+local GravitySlider = Home.Sliders.Gravity
+local gravityslider = Slider:New(GravitySlider, 392, 0)
+gravityslider:Set(0.5)
+gravityslider:Connect(function(Value)
+	GravitySlider.Text.Text = Value
+	workspace.Gravity = Value
+end)
+GravitySlider.Text.FocusLost:Connect(function()
+	if tonumber(GravitySlider.Text.Text) then
+		local Gravity = tonumber(GravitySlider.Text.Text)
+		GravitySlider.Text.Text = Gravity
+		workspace.Gravity = Gravity
+		gravityslider:Set(math.clamp(Gravity/392, 0, 1))
+	else
+		GravitySlider.Text.Text = workspace.Gravity
 	end
-	return false
-end)
-Theme:Load()
-
-for _, Button in pairs(Settings.Themes:GetChildren()) do
-	if not Button:IsA('Button') then continue end
-	
-	Button.Activated:Connect(function()
-		Theme:Set(Button.Name)
-	end)
-end
-
-local DragSlider = Slider:New(Settings.DragSpeed, 35, 8)
-DragSlider:Set((Vhub.Options.DragSpeed-8)/35)
-Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
-DragSlider:OnRelease(function(Value)
-	DragSpeed:Set(Value)
-	Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
 end)
 
+Home.GameInfo.GameInfo.Text = "Game: "..game.Name
+Home.GameInfo.GameId.Text = "Id: "..game.PlaceId
+Home.GameInfo.JobId.Text = game.JobId
+
+Home.UserInfo.Avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(Player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
+Home.UserInfo.NameLabel.Text = Player.Name
+
+Event = Services.RunService.RenderStepped:Connect(function()
+	if not _G.Vhub then Event:Disconnect() return end
+	local Character = Player.Character
+	if Character ~= nil then
+		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+		if Humanoid ~= nil then
+			Humanoid.UseJumpPower = true
+			Humanoid.JumpPower = JumpPower
+			Humanoid.WalkSpeed = Speed
+		end
+	end
+end)
