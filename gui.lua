@@ -1425,70 +1425,70 @@ G2L["a8"]["Thickness"] = 2;
 G2L["a8"]["Transparency"] = 1;
 G2L["a8"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
 
--- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.Background
-G2L["a9"] = Instance.new("ImageLabel", G2L["8a"]);
-G2L["a9"]["ZIndex"] = 0;
-G2L["a9"]["SliceCenter"] = Rect.new(0, 256, 0, 256);
-G2L["a9"]["ScaleType"] = Enum.ScaleType.Tile;
-G2L["a9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["a9"]["ImageTransparency"] = 0.6000000238418579;
-G2L["a9"]["Image"] = [[rbxassetid://2151741365]];
-G2L["a9"]["TileSize"] = UDim2.new(0, 250, 0, 250);
-G2L["a9"]["Size"] = UDim2.new(1, 0, 1, 0);
-G2L["a9"]["Name"] = [[Background]];
-G2L["a9"]["BackgroundTransparency"] = 1;
-
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton
-G2L["aa"] = Instance.new("TextButton", G2L["8a"]);
-G2L["aa"]["Active"] = false;
-G2L["aa"]["BorderSizePixel"] = 0;
-G2L["aa"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
-G2L["aa"]["Selectable"] = false;
-G2L["aa"]["AnchorPoint"] = Vector2.new(0.5, 0);
-G2L["aa"]["Size"] = UDim2.new(0, 185, 0, 25);
-G2L["aa"]["Name"] = [[KillButton]];
-G2L["aa"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["aa"]["Text"] = [[]];
-G2L["aa"]["Position"] = UDim2.new(0.5, 0, 0, 173);
+G2L["a9"] = Instance.new("TextButton", G2L["8a"]);
+G2L["a9"]["Active"] = false;
+G2L["a9"]["BorderSizePixel"] = 0;
+G2L["a9"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
+G2L["a9"]["Selectable"] = false;
+G2L["a9"]["AnchorPoint"] = Vector2.new(0.5, 0);
+G2L["a9"]["Size"] = UDim2.new(0, 185, 0, 25);
+G2L["a9"]["Name"] = [[KillButton]];
+G2L["a9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["a9"]["Text"] = [[]];
+G2L["a9"]["Position"] = UDim2.new(0.5, 0, 0, 173);
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton.UIListLayout
-G2L["ab"] = Instance.new("UIListLayout", G2L["aa"]);
-G2L["ab"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
-G2L["ab"]["FillDirection"] = Enum.FillDirection.Horizontal;
-G2L["ab"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
-G2L["ab"]["Padding"] = UDim.new(0, 5);
-G2L["ab"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["aa"] = Instance.new("UIListLayout", G2L["a9"]);
+G2L["aa"]["VerticalAlignment"] = Enum.VerticalAlignment.Center;
+G2L["aa"]["FillDirection"] = Enum.FillDirection.Horizontal;
+G2L["aa"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
+G2L["aa"]["Padding"] = UDim.new(0, 5);
+G2L["aa"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton.ImageLabel
-G2L["ac"] = Instance.new("ImageLabel", G2L["aa"]);
-G2L["ac"]["BorderSizePixel"] = 0;
-G2L["ac"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["ac"]["Image"] = [[rbxassetid://11811729266]];
-G2L["ac"]["Size"] = UDim2.new(0, 14, 0, 14);
-G2L["ac"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["ac"]["BackgroundTransparency"] = 1;
+G2L["ab"] = Instance.new("ImageLabel", G2L["a9"]);
+G2L["ab"]["BorderSizePixel"] = 0;
+G2L["ab"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ab"]["Image"] = [[rbxassetid://11811729266]];
+G2L["ab"]["Size"] = UDim2.new(0, 14, 0, 14);
+G2L["ab"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ab"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton.Title
-G2L["ad"] = Instance.new("TextLabel", G2L["aa"]);
-G2L["ad"]["BorderSizePixel"] = 0;
-G2L["ad"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["ad"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
-G2L["ad"]["TextSize"] = 14;
-G2L["ad"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["ad"]["AutomaticSize"] = Enum.AutomaticSize.X;
-G2L["ad"]["Size"] = UDim2.new(0, 0, 0, 33);
-G2L["ad"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["ad"]["Text"] = [[Kill Vhub]];
-G2L["ad"]["Name"] = [[Title]];
-G2L["ad"]["BackgroundTransparency"] = 1;
+G2L["ac"] = Instance.new("TextLabel", G2L["a9"]);
+G2L["ac"]["BorderSizePixel"] = 0;
+G2L["ac"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ac"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["ac"]["TextSize"] = 14;
+G2L["ac"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ac"]["AutomaticSize"] = Enum.AutomaticSize.X;
+G2L["ac"]["Size"] = UDim2.new(0, 0, 0, 33);
+G2L["ac"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ac"]["Text"] = [[Kill Vhub]];
+G2L["ac"]["Name"] = [[Title]];
+G2L["ac"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton.Title.UICorner
-G2L["ae"] = Instance.new("UICorner", G2L["ad"]);
-G2L["ae"]["CornerRadius"] = UDim.new(0, 5);
+G2L["ad"] = Instance.new("UICorner", G2L["ac"]);
+G2L["ad"]["CornerRadius"] = UDim.new(0, 5);
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Settings.KillButton.UICorner
-G2L["af"] = Instance.new("UICorner", G2L["aa"]);
+G2L["ae"] = Instance.new("UICorner", G2L["a9"]);
 
+
+-- StarterGui.VHub.DragFrame.Frame.Main.Background
+G2L["af"] = Instance.new("ImageLabel", G2L["f"]);
+G2L["af"]["ZIndex"] = 0;
+G2L["af"]["SliceCenter"] = Rect.new(0, 256, 0, 256);
+G2L["af"]["ScaleType"] = Enum.ScaleType.Tile;
+G2L["af"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["af"]["ImageTransparency"] = 0.6000000238418579;
+G2L["af"]["Image"] = [[rbxassetid://2151741365]];
+G2L["af"]["TileSize"] = UDim2.new(0, 250, 0, 250);
+G2L["af"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["af"]["Name"] = [[Background]];
+G2L["af"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.VHub.ActivateButton
 G2L["b0"] = Instance.new("ImageButton", G2L["1"]);
