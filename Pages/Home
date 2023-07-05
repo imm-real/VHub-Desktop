@@ -14,7 +14,7 @@ local Speed = 16
 local JumpPower = 50
 
 local SpeedSlider = Home.Sliders.Speed
-local speedslider = Slider:Init(SpeedSlider, 160, 0)
+local speedslider = Slider:New(SpeedSlider, 160, 0)
 speedslider:Connect(function(Value)
 	SpeedSlider.Text.Text = Value
 	Speed = Value
@@ -30,7 +30,7 @@ SpeedSlider.Text.FocusLost:Connect(function()
 end)
 
 local JumpSlider = Home.Sliders.JumpPower
-local jumpslider = Slider:Init(JumpSlider, 500, 0)
+local jumpslider = Slider:New(JumpSlider, 500, 0)
 jumpslider:Connect(function(Value)
 	JumpSlider.Text.Text = Value
 	JumpPower = Value
@@ -46,7 +46,7 @@ JumpSlider.Text.FocusLost:Connect(function()
 end)
 
 local GravitySlider = Home.Sliders.Gravity
-local gravityslider = Slider:Init(GravitySlider, 392, 0)
+local gravityslider = Slider:New(GravitySlider, 392, 0)
 gravityslider:Set(0.5)
 gravityslider:Connect(function(Value)
 	GravitySlider.Text.Text = Value
@@ -71,6 +71,7 @@ Home.UserInfo.Avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(Pl
 Home.UserInfo.NameLabel.Text = Player.Name
 
 Services.RunService.RenderStepped:Connect(function()
+	if not _G.Vhub then return end
 	local Character = Player.Character
 	if Character ~= nil then
 		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
