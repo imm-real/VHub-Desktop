@@ -4,16 +4,6 @@ local Services = {
 	HttpService = game:GetService('HttpService')
 }
 
-function option:New(Name, CheckFunction)
-	if not _G.Vhub.Options[Name] then return end
-	self = {
-		option = Name,
-		func = CheckFunction
-	}
-	task.spawn(function() self:Load() end)
-	return setmetatable(self, option)
-end
-
 function option:Save(Value)
 	local Options = {}
 	if isfile('vhub_options.json') then
@@ -37,6 +27,16 @@ function option:Set(Value)
 	if not self.func(Value) then return end
 	
 	_G.Vhub.Options[self.option] = Value
+end
+
+function option:New(Name, CheckFunction)
+	if not _G.Vhub.Options[Name] then return end
+	self = {
+		option = Name,
+		func = CheckFunction
+	}
+	task.spawn(function() self:Load() end)
+	return setmetatable(self, option)
 end
 
 return option
