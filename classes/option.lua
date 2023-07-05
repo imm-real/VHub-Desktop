@@ -27,6 +27,7 @@ function option:Set(Value)
 	if not self.func(Value) then return end
 	
 	_G.Vhub.Options[self.option] = Value
+	option:Save(Value)
 end
 
 function option:New(Name, CheckFunction)
