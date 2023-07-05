@@ -37,7 +37,6 @@ function option:New(Name, CheckFunction)
 		func = CheckFunction
 	}
 	setmetatable(self, option)
-	self.Load()
 	return self
 end
 
