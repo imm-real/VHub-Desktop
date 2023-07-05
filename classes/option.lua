@@ -37,7 +37,6 @@ function option:New(Name, CheckFunction)
 		option = Name,
 		func = CheckFunction
 	}
-	task.spawn(function() self:Load() end)
 	return setmetatable(self, option)
 end
 
