@@ -63,3 +63,7 @@ DragSlider:OnRelease(function(Value)
 	Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
 end)
 
+Settings.KillButton.Activated:Connect(function()
+	_G.Vhub.Gui:Destroy()
+	_G.Vhub = nil
+end)
