@@ -7,17 +7,17 @@ local Services = {
 
 function option:Save(Value)
 	local Options = {}
-	if isfile('vhub_options.json') then
-		Options = Services.HttpService:JSONDecode(readfile('vhub_options.vh'))
+	if isfile('options.vh') then
+		Options = Services.HttpService:JSONDecode(readfile('options.vh'))
 	end
 	
 	Options[self.option] = Value
-	writefile('vhub_options.json', Services.HttpService:JSONEncode(Options))
+	writefile('options.vh', Services.HttpService:JSONEncode(Options))
 end
 
 function option:Load()
-	if not isfile('vhub_options.json') then return end
-	local Options = Services.HttpService:JSONDecode(readfile('vhub_options.json'))
+	if not isfile('options.vh') then return end
+	local Options = Services.HttpService:JSONDecode(readfile('options.vh'))
 	
 	if not Options[self.option] then return end
 	if not self.func(Options[self.option]) then return end
