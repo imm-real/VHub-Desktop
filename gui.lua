@@ -1415,6 +1415,7 @@ G2L["a2"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.f
 -- StarterGui.VHub.DragFrame.Settings.DragSpeed.Text
 G2L["a3"] = Instance.new("TextBox", G2L["9a"]);
 G2L["a3"]["Active"] = false;
+G2L["a3"]["TextEditable"] = false;
 G2L["a3"]["TextSize"] = 12;
 G2L["a3"]["TextXAlignment"] = Enum.TextXAlignment.Right;
 G2L["a3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
