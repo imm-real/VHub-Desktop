@@ -21,12 +21,12 @@ SettingsButton.Activated:Connect(function()
 			SettingsButton.Fill, 
 			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
 			{ImageTransparency = 0}
-		)
+		):Play()
 	else
 		Services.TweenService:Create(
 			SettingsButton.Fill, 
 			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
 			{ImageTransparency = 1}
-		)
+		):Play()
 	end
 end)
