@@ -48,7 +48,7 @@ end)
 Theme:Load()
 
 for _, Button in pairs(Settings.Themes:GetChildren()) do
-	if not Button:IsA('Button') then print(Button) continue end
+	if not Button:IsA('TextButton') then continue end
 
 	Button.MouseButton1Click:Connect(function()
 		Theme:Set(Button.Name)
