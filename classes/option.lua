@@ -10,7 +10,7 @@ function option:Save(Value)
 	if isfile('options.vh') then
 		Options = Services.HttpService:JSONDecode(readfile('options.vh'))
 	end
-	
+	print(self.option)
 	Options[self.option] = Value
 	writefile('options.vh', Services.HttpService:JSONEncode(Options))
 end
