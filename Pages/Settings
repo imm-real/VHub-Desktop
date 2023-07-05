@@ -41,8 +41,8 @@ DragSpeed:Load()
 
 local DragSlider = Slider:New(Settings.DragSpeed, 35, 8)
 DragSlider:Set((Vhub.Options.DragSpeed-8)/35)
-DragSlider.Text.Text = Vhub.Options.DragSpeed
-DragSlider:Connect(function(Value)
+Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
+DragSlider:OnRelease(function(Value)
 	DragSpeed:Set(Value)
-	DragSlider.Text.Text = Vhub.Options.Value
+	Settings.DragSpeed.Text.Text = Vhub.Options.DragSpeed
 end)
