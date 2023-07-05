@@ -101,8 +101,8 @@ function slider:New(SliderFrame, Max, Min)
 		self.MouseDown = true
 	end)
 	UserInputService.InputEnded:Connect(function(Input)
-		if not (Input.UserInputType == Enum.UserInputType.MouseButton1) then return end
-
+		if not (Input.UserInputType == Enum.UserInputType.MouseButton1) and self.MouseDown then return end
+		
 		self.MouseDown = false
 		self:FireRelease(self:GetOffset())
 	end)
