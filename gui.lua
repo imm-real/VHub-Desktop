@@ -391,13 +391,15 @@ G2L["2a"]["Name"] = [[Settings]];
 G2L["2a"]["Position"] = UDim2.new(0, 403, 0, 1);
 G2L["2a"]["BackgroundTransparency"] = 1;
 
--- StarterGui.VHub.DragFrame.Frame.Main.Title.Settings.ImageLabel
+-- StarterGui.VHub.DragFrame.Frame.Main.Title.Settings.Fill
 G2L["2b"] = Instance.new("ImageLabel", G2L["2a"]);
 G2L["2b"]["BorderSizePixel"] = 0;
 G2L["2b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2b"]["ImageTransparency"] = 1;
 G2L["2b"]["Image"] = [[rbxassetid://10792073394]];
 G2L["2b"]["Size"] = UDim2.new(1, 0, 1, 0);
 G2L["2b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2b"]["Name"] = [[Fill]];
 G2L["2b"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Title.Title
