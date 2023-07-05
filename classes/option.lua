@@ -5,15 +5,6 @@ local Services = {
 	HttpService = game:GetService('HttpService')
 }
 
-function option:Save(Value)
-	local Options = {}
-	if isfile('options.vh') then
-		Options = Services.HttpService:JSONDecode(readfile('options.vh'))
-	end
-	Options[self.name] = Value
-	writefile('options.vh', Services.HttpService:JSONEncode(Options))
-end
-
 function option:Load()
 	if not isfile('options.vh') then return end
 	local Options = Services.HttpService:JSONDecode(readfile('options.vh'))
@@ -28,6 +19,15 @@ function option:Set(Value)
 
 	_G.Vhub.Options[self.name] = Value
 	option:Save(Value)
+end
+
+function option:Save(Value)
+	local Options = {}
+	if isfile('options.vh') then
+		Options = Services.HttpService:JSONDecode(readfile('options.vh'))
+	end
+	Options[self.name] = Value
+	writefile('options.vh', Services.HttpService:JSONEncode(Options))
 end
 
 function option:New(Name, CheckFunction)
