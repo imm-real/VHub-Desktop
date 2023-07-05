@@ -1,0 +1,32 @@
+local Vhub = _G.Vhub
+
+local Option = Vhub.Libs.Option
+local Slider = Vhub.Libs.Slider
+local Gui = Vhub.Gui
+
+local Settings = Gui.DragFrame.Settings
+local SettingsButton = Gui.DragFrame.Frame.Main.Title.Settings
+
+local Services = {
+	TweenService = game:GetService('TweenService')
+}
+
+local Active = false
+
+SettingsButton.Activated:Connect(function()
+	Active = not Active
+	Settings.Visible = Active
+	if Active then
+		Services.TweenService:Create(
+			SettingsButton.Fill, 
+			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
+			{ImageTransparency = 0}
+		)
+	else
+		Services.TweenService:Create(
+			SettingsButton.Fill, 
+			TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), 
+			{ImageTransparency = 1}
+		)
+	end
+end)
