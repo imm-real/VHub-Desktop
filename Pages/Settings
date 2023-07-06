@@ -12,15 +12,13 @@ local DragSpeed = Option:New('DragSpeed', function(Value)
 	end
 	return false
 end)
-DragSpeed:Load()
-
 local Theme = Option:New('Theme', function(Value)
 	if Value == 'Red' or Value == 'Yellow' or Value == 'Green' or Value == 'Blue' then
 		return true
 	end
 	return false
 end)
-Theme:Load()
+Option:Load()
 
 function HighlightTheme(Name)
 	for _, Button in pairs(Settings.Settings.Theme:GetChildren()) do
@@ -31,6 +29,14 @@ function HighlightTheme(Name)
 	Settings.Settings.Theme:FindFirstChild(Name).UIStroke.Transparency = 0
 end
 
+local Themes = {
+	Red = Color3.fromRGB(204, 64, 64),
+	Yellow = Color3.fromRGB(255, 232, 57),
+	Green = Color3.fromRGB(74, 255, 74),
+	Blue = Color3.fromRGB(52, 157, 255)
+}
+
+Vhub.Functions.ChangeTheme(Themes[_G.Vhub.Options.Theme])
 HighlightTheme(_G.Vhub.Options.Theme)
 
 for _, Button in pairs(Settings.Settings.Theme:GetChildren()) do
@@ -38,6 +44,7 @@ for _, Button in pairs(Settings.Settings.Theme:GetChildren()) do
 
 	Button.MouseButton1Click:Connect(function()
 		Theme:Set(Button.Name)
+		Vhub.Functions.ChangeTheme(Themes[Button.Name])
 		HighlightTheme(Button.Name)
 	end)
 end
@@ -48,7 +55,7 @@ DragSlider:OnRelease(function(Value)
 	DragSpeed:Set(Value)
 end)
 
-Settings.KillButton.Activated:Connect(function()
+Settings.KillButton.MouseButton1Click:Connect(function()
 	_G.Vhub.Gui:Destroy()
 	_G.Vhub = nil
 end)
