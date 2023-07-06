@@ -5,13 +5,18 @@ local Services = {
 	HttpService = game:GetService('HttpService')
 }
 
+local Checks = {}
+
 function option:Load()
 	if not isfile('options.vh') then return end
 	local Options = Services.HttpService:JSONDecode(readfile('options.vh'))
 
-	if not Options[self.name] then return end
-	if not self.func(Options[self.name]) then return end
-	_G.Vhub.Options[self.name] = Options[self.name]
+	for Option, Value in pairs(Options) do
+		if not Checks[Option] then continue end
+		if not Checks[Option](Value) then continue end
+		
+		_G.Vhub.Options[Option] = Value
+	end
 end
 
 function option:Set(Value)
@@ -36,6 +41,7 @@ function option:New(Name, CheckFunction)
 		name = Name,
 		func = CheckFunction
 	}
+	Checks[Name] = CheckFunction
 	setmetatable(self, option)
 	return self
 end
