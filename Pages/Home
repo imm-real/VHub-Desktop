@@ -36,6 +36,9 @@ function ChangeJumpPower(JumpPower)
 	end
 end
 
+ChangeSpeed(Speed)
+ChangeJumpPower(JumpPower)
+
 local SpeedSlider = Home.Sliders.Speed
 local speedslider = Slider:New(SpeedSlider, 160, 0)
 speedslider:Connect(function(Value)
