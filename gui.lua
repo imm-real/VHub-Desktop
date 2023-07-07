@@ -7,11 +7,11 @@
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
 
--- Instances: 186 | Scripts: 0 | Modules: 0
+-- Instances: 189 | Scripts: 0 | Modules: 0
 local G2L = {};
 
 -- StarterGui.VHub
-G2L["1"] = Instance.new("ScreenGui");
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[VHub]];
@@ -1572,18 +1572,53 @@ G2L["b8"]["Name"] = [[Close]];
 G2L["b8"]["Position"] = UDim2.new(0, 421, 0, 1);
 G2L["b8"]["BackgroundTransparency"] = 1;
 
--- StarterGui.VHub.ActivateButton
-G2L["b9"] = Instance.new("ImageButton", G2L["1"]);
-G2L["b9"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
-G2L["b9"]["Image"] = [[rbxassetid://12951394213]];
-G2L["b9"]["Size"] = UDim2.new(0, 30, 0, 30);
-G2L["b9"]["Name"] = [[ActivateButton]];
+-- StarterGui.VHub.DragFrame.Frame.Loading
+G2L["b9"] = Instance.new("Frame", G2L["c"]);
+G2L["b9"]["BorderSizePixel"] = 0;
+G2L["b9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b9"]["BackgroundTransparency"] = 1;
+G2L["b9"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["b9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["b9"]["Visible"] = false;
-G2L["b9"]["BackgroundTransparency"] = 0.5;
+G2L["b9"]["Name"] = [[Loading]];
+
+-- StarterGui.VHub.DragFrame.Frame.Loading.TextLabel
+G2L["ba"] = Instance.new("TextLabel", G2L["b9"]);
+G2L["ba"]["BorderSizePixel"] = 0;
+G2L["ba"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ba"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["ba"]["TextSize"] = 24;
+G2L["ba"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["ba"]["Size"] = UDim2.new(1, 0, 0, 130);
+G2L["ba"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["ba"]["Text"] = [[Loading]];
+G2L["ba"]["BackgroundTransparency"] = 1;
+
+-- StarterGui.VHub.DragFrame.Frame.Loading.Loading
+G2L["bb"] = Instance.new("ImageLabel", G2L["b9"]);
+G2L["bb"]["BorderSizePixel"] = 0;
+G2L["bb"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["bb"]["ImageColor3"] = Color3.fromRGB(255, 0, 0);
+G2L["bb"]["AnchorPoint"] = Vector2.new(0.5, 0);
+G2L["bb"]["Image"] = [[rbxassetid://6331335348]];
+G2L["bb"]["Size"] = UDim2.new(0, 100, 0, 100);
+G2L["bb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["bb"]["Name"] = [[Loading]];
+G2L["bb"]["BackgroundTransparency"] = 1;
+G2L["bb"]["Position"] = UDim2.new(0.5, 0, 0, 90);
+
+-- StarterGui.VHub.ActivateButton
+G2L["bc"] = Instance.new("ImageButton", G2L["1"]);
+G2L["bc"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
+G2L["bc"]["Image"] = [[rbxassetid://12951394213]];
+G2L["bc"]["Size"] = UDim2.new(0, 30, 0, 30);
+G2L["bc"]["Name"] = [[ActivateButton]];
+G2L["bc"]["Visible"] = false;
+G2L["bc"]["BackgroundTransparency"] = 0.5;
 
 -- StarterGui.VHub.ActivateButton.UICorner
-G2L["ba"] = Instance.new("UICorner", G2L["b9"]);
-G2L["ba"]["CornerRadius"] = UDim.new(0, 5);
+G2L["bd"] = Instance.new("UICorner", G2L["bc"]);
+G2L["bd"]["CornerRadius"] = UDim.new(0, 5);
 
 
-return G2L["1"], require;
+return G2L["1"]
