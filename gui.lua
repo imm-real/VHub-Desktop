@@ -7,11 +7,11 @@
  Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
 ]=]
 
--- Instances: 185 | Scripts: 0 | Modules: 0
+-- Instances: 186 | Scripts: 0 | Modules: 0
 local G2L = {};
 
 -- StarterGui.VHub
-G2L["1"] = Instance.new("ScreenGui");
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[VHub]];
@@ -1562,18 +1562,28 @@ G2L["b6"]["Position"] = UDim2.new(0.5, 0, 0, 20);
 G2L["b7"] = Instance.new("UICorner", G2L["b6"]);
 G2L["b7"]["CornerRadius"] = UDim.new(1, 0);
 
+-- StarterGui.VHub.DragFrame.Frame.Key.Close
+G2L["b8"] = Instance.new("ImageButton", G2L["b0"]);
+G2L["b8"]["SizeConstraint"] = Enum.SizeConstraint.RelativeYY;
+G2L["b8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b8"]["Image"] = [[rbxassetid://11811729266]];
+G2L["b8"]["Size"] = UDim2.new(0, 18, 0, 18);
+G2L["b8"]["Name"] = [[Close]];
+G2L["b8"]["Position"] = UDim2.new(0, 421, 0, 1);
+G2L["b8"]["BackgroundTransparency"] = 1;
+
 -- StarterGui.VHub.ActivateButton
-G2L["b8"] = Instance.new("ImageButton", G2L["1"]);
-G2L["b8"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
-G2L["b8"]["Image"] = [[rbxassetid://12951394213]];
-G2L["b8"]["Size"] = UDim2.new(0, 30, 0, 30);
-G2L["b8"]["Name"] = [[ActivateButton]];
-G2L["b8"]["Visible"] = false;
-G2L["b8"]["BackgroundTransparency"] = 0.5;
+G2L["b9"] = Instance.new("ImageButton", G2L["1"]);
+G2L["b9"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
+G2L["b9"]["Image"] = [[rbxassetid://12951394213]];
+G2L["b9"]["Size"] = UDim2.new(0, 30, 0, 30);
+G2L["b9"]["Name"] = [[ActivateButton]];
+G2L["b9"]["Visible"] = false;
+G2L["b9"]["BackgroundTransparency"] = 0.5;
 
 -- StarterGui.VHub.ActivateButton.UICorner
-G2L["b9"] = Instance.new("UICorner", G2L["b8"]);
-G2L["b9"]["CornerRadius"] = UDim.new(0, 5);
+G2L["ba"] = Instance.new("UICorner", G2L["b9"]);
+G2L["ba"]["CornerRadius"] = UDim.new(0, 5);
 
 
-return G2L["1"]
+return G2L["1"], require;
