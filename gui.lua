@@ -1048,8 +1048,11 @@ G2L["78"]["ClearTextOnFocus"] = false;
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.UIPageLayout
 G2L["79"] = Instance.new("UIPageLayout", G2L["34"]);
 G2L["79"]["TweenTime"] = 0.5;
+G2L["79"]["ScrollWheelInputEnabled"] = false;
+G2L["79"]["TouchInputEnabled"] = false;
 G2L["79"]["EasingStyle"] = Enum.EasingStyle.Cubic;
 G2L["79"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["79"]["GamepadInputEnabled"] = false;
 G2L["79"]["Padding"] = UDim.new(0, 20);
 G2L["79"]["EasingDirection"] = Enum.EasingDirection.InOut;
 
@@ -1621,4 +1624,4 @@ G2L["bd"] = Instance.new("UICorner", G2L["bc"]);
 G2L["bd"]["CornerRadius"] = UDim.new(0, 5);
 
 
-return G2L["1"]
+return G2L["1"], require;
