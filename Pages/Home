@@ -13,15 +13,38 @@ local Services = {
 local Speed = 16
 local JumpPower = 50
 
+function ChangeSpeed(Speed)
+	Speed = tonumber(Speed)
+	local Character = Player.Character
+	if Character ~= nil then
+		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+		if Humanoid ~= nil then
+			Humanoid.WalkSpeed = Speed
+		end
+	end
+end
+
+function ChangeJumpPower(JumpPower)
+	JumpPower = tonumber(JumpPower)
+	local Character = Player.Character
+	if Character ~= nil then
+		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+		if Humanoid ~= nil then
+			Humanoid.UseJumpPower = true
+			Humanoid.JumpPower = Speed
+		end
+	end
+end
+
 local SpeedSlider = Home.Sliders.Speed
 local speedslider = Slider:New(SpeedSlider, 160, 0)
 speedslider:Connect(function(Value)
+	ChangeSpeed(Value)
 	SpeedSlider.Text.Text = Value
-	Speed = Value
 end)
 SpeedSlider.Text.FocusLost:Connect(function()
 	if tonumber(SpeedSlider.Text.Text) then
-		Speed = tonumber(SpeedSlider.Text.Text)
+		ChangeSpeed(SpeedSlider.Text.Text)
 		SpeedSlider.Text.Text = Speed
 		speedslider:Set(math.clamp(Speed/160, 0, 1))
 	else
@@ -33,11 +56,11 @@ local JumpSlider = Home.Sliders.JumpPower
 local jumpslider = Slider:New(JumpSlider, 500, 0)
 jumpslider:Connect(function(Value)
 	JumpSlider.Text.Text = Value
-	JumpPower = Value
+	ChangeJumpPower(Value)
 end)
 JumpSlider.Text.FocusLost:Connect(function()
 	if tonumber(JumpSlider.Text.Text) then
-		JumpPower = tonumber(JumpSlider.Text.Text)
+		ChangeJumpPower(JumpSlider.Text.Text)
 		JumpSlider.Text.Text = JumpPower
 		jumpslider:Set(math.clamp(JumpPower/500, 0, 1))
 	else
@@ -69,16 +92,3 @@ Home.GameInfo.JobId.Text = game.JobId
 
 Home.UserInfo.Avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(Player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
 Home.UserInfo.NameLabel.Text = Player.Name
-
-Event = Services.RunService.RenderStepped:Connect(function()
-	if not _G.Vhub then Event:Disconnect() return end
-	local Character = Player.Character
-	if Character ~= nil then
-		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-		if Humanoid ~= nil then
-			Humanoid.UseJumpPower = true
-			Humanoid.JumpPower = JumpPower
-			Humanoid.WalkSpeed = Speed
-		end
-	end
-end)
