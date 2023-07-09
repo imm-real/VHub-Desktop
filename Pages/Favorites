@@ -16,7 +16,7 @@ function RemoveFavoriteScript(ScriptCode)
 end
 
 Vhub.Functions.AddFavoriteScript = AddFavoriteScript
-Vhub.Functions.RemoveFavoriteScript = AddFavoriteScript
+Vhub.Functions.RemoveFavoriteScript = RemoveFavoriteScript
 
 for ScriptCode, Script in pairs(Favs) do
 	AddFavoriteScript(Script.Title, Script.Description, ScriptCode)
