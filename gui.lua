@@ -1569,7 +1569,9 @@ G2L["b6"]["CellPadding"] = UDim2.new(0, 6, 0, 5);
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Pages.Favorites.ScriptsFrame.UIPadding
 G2L["b7"] = Instance.new("UIPadding", G2L["b5"]);
+G2L["b7"]["PaddingTop"] = UDim.new(0, 10);
 G2L["b7"]["PaddingRight"] = UDim.new(0, 10);
+G2L["b7"]["PaddingBottom"] = UDim.new(0, 10);
 G2L["b7"]["PaddingLeft"] = UDim.new(0, 10);
 
 -- StarterGui.VHub.DragFrame.Frame.Main.Background
@@ -1715,4 +1717,4 @@ G2L["c6"] = Instance.new("UICorner", G2L["c5"]);
 G2L["c6"]["CornerRadius"] = UDim.new(0, 5);
 
 
-return G2L["1"];
+return G2L["1"]
