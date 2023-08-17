@@ -19,14 +19,9 @@ function option:Load()
 	end
 end
 
-function option:Set(Value)
-	if not self.func(Value) then return end
-
-	_G.Vhub.Options[self.name] = Value
-	self:Save(Value)
-end
-
 function option:Save(Value)
+	if not self.func(Value) then return end
+	
 	local Options = {}
 	if isfile('options.vh') then
 		Options = Services.HttpService:JSONDecode(readfile('options.vh'))
