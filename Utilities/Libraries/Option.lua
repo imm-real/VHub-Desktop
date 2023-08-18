@@ -1,5 +1,5 @@
-local option = {}
-option.__index = option
+local Option = {}
+Option.__index = Option
 
 local Services = {
 	HttpService = game:GetService('HttpService')
@@ -7,7 +7,7 @@ local Services = {
 
 local Checks = {}
 
-function option:Load()
+function Option:Load()
 	if not isfile('options.vh') then return end
 	local Options = Services.HttpService:JSONDecode(readfile('options.vh'))
 
@@ -23,7 +23,7 @@ function option:Load()
 	end
 end
 
-function option:Save(Value)
+function Option:Save(Value)
 	if not self.func(Value) then return end
 
 	local Options = {}
@@ -38,15 +38,15 @@ function option:Save(Value)
 	writefile('options.vh', Services.HttpService:JSONEncode(Options))
 end
 
-function option:New(Name, CheckFunction)
+function Option:New(Name, CheckFunction)
 	if not _G.Vhub.Options[Name] then return end
 	self = {
 		name = Name,
 		func = CheckFunction
 	}
 	Checks[Name] = CheckFunction
-	setmetatable(self, option)
+	setmetatable(self, Option)
 	return self
 end
 
-return option
+return Option
