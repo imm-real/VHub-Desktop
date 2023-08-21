@@ -17,6 +17,7 @@ G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 -- StarterGui.Nofitications.Frame
 G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["@"]["Visible"] = false;
 G2L["2"]["BorderSizePixel"] = 0;
 G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["2"]["AnchorPoint"] = Vector2.new(1, 1);
@@ -101,7 +102,7 @@ G2L["a"] = Instance.new("UIScale", G2L["4"]);
 
 
 
-local Gui = G2L
+local Gui = G2L["1"]
 
 function CloseNotify(Frame)
 	if Frame then
