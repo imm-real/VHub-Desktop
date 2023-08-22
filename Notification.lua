@@ -103,8 +103,12 @@ G2L["8"]["Name"] = [[Offline]];
 
 if _G.VhubNotify == nil then
 	_G.VhubNotify = G2L["1"]
+else
+	G2L["1"]:Destroy()
 end
 
+local Audio = Instance.new('Sound')
+Audio.SoundId = 'rbxassetid://6026984224'
 local Notification = {}
 local Gui = _G.VhubNotify
 
@@ -137,6 +141,7 @@ end
 
 function Notification:CreateNotify(Notification)
 	local Frame = Gui.Frame.Frame:Clone()
+	Audio:Play()
 	Frame.Position = UDim2.new(0, -205, 1, 0)
 	Frame.Name = self:GenID()
 	Frame.Parent = Gui.Frame
