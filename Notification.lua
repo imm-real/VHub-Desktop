@@ -101,13 +101,14 @@ G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["8"]["Position"] = UDim2.new(0, 5, 0, 25);
 G2L["8"]["Name"] = [[Offline]];
 
-if not _G.VHubNotify then
+if _G.VhubNotify == nil then
 	_G.VhubNotify = G2L["1"]
 end
 
+local Notification = {}
 local Gui = _G.VhubNotify
 
-function CloseNotify(Frame)
+function Notification:CloseNotify(Frame)
 	if Frame then
 		game:GetService('TweenService'):Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {GroupTransparency = 1}):Play()
 		task.wait(0.5)
@@ -116,42 +117,37 @@ function CloseNotify(Frame)
 end
 
 local ID = 0
-function GenID()
+function Notification:GenID()
 	ID = ID + 1
 	return ID
 end
 
-function Refresh()
+function Notification:Refresh()
 	local Frames = Gui.Frame:GetChildren()
+	print(#Frames)
 	for Index = #Frames, 1, -1 do
 		local Frame = Frames[Index]
-		if not Frame:IsA("CanvasGroup") and Frame.Visible == false then
+		if not Frame.Visible then
 			continue
 		end
-		
+
 		local Position = UDim2.new(0, 0, 1, -(105*(#Frames-Index)))
+		print(Position)
 		game:GetService('TweenService'):Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Position = Position}):Play()
 	end
 end
 
-Gui.Frame.ChildAdded:Connect(function()
-	Refresh()
-end)
-
-Gui.Frame.ChildRemoved:Connect(function()
-	Refresh()
-end)
-
-function CreateNotify(Notification)
+function Notification:CreateNotify(Notification)
 	local Frame = Gui.Frame.Frame:Clone()
 	Frame.Position = UDim2.new(0, -205, 1, 0)
-	Frame.Name = GenID()
-	Frame.Parent = Gui.Frame.Frame.Parent
+	Frame.Name = self:GenID()
+	Frame.Parent = Gui.Frame
 	Frame.Text.Text = Notification
 	Frame.Visible = true
-	task.delay(10, function() CloseNotify(Frame)  end)
+	self:Refresh()
+	task.delay(10, function() self:CloseNotify(Frame)  end)
 	game:GetService('TweenService'):Create(Frame.Line, TweenInfo.new(10, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 2)}):Play()
 	game:GetService('TweenService'):Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {GroupTransparency = 0}):Play()
 end
 
-return CreateNotify
+return Notification
