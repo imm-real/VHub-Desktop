@@ -107,7 +107,7 @@ else
 	G2L["1"]:Destroy()
 end
 
-local Audio = Instance.new('Sound')
+local Audio = Instance.new('Sound', workspace)
 Audio.SoundId = 'rbxassetid://6026984224'
 local Notification = {}
 local Gui = _G.VhubNotify
