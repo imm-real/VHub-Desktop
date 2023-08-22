@@ -124,7 +124,6 @@ end
 
 function Notification:Refresh()
 	local Frames = Gui.Frame:GetChildren()
-	print(#Frames)
 	for Index = #Frames, 1, -1 do
 		local Frame = Frames[Index]
 		if not Frame.Visible then
@@ -132,7 +131,6 @@ function Notification:Refresh()
 		end
 
 		local Position = UDim2.new(0, 0, 1, -(105*(#Frames-Index)))
-		print(Position)
 		game:GetService('TweenService'):Create(Frame, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Position = Position}):Play()
 	end
 end
