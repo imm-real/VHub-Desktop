@@ -121,8 +121,6 @@ function GenID()
 	return ID
 end
 
-local Gui = game.StarterGui.Nofitications
-
 function Refresh()
 	local Frames = Gui.Frame:GetChildren()
 	for Index = #Frames, 1, -1 do
