@@ -27,8 +27,6 @@ end
 
 function Option.save(Value)
 	local succes, error = pcall(function()
-		if not self.check_function(Value) then return end
-
 		local Options = {}
 		if isfile('options.vh') then
 			Options = HttpService:JSONDecode(readfile('options.vh'))
