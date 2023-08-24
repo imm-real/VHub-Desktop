@@ -366,12 +366,12 @@ G2L["28"]["BackgroundTransparency"] = 1;
 
 -- StarterGui.VHub.VHub.VhubFrame.Pages.Home.GameInfo.Frame.Welcome.JobId
 G2L["29"] = Instance.new("TextButton", G2L["25"]);
+G2L["29"]["TextWrapped"] = true;
 G2L["29"]["Active"] = false;
 G2L["29"]["BorderSizePixel"] = 0;
 G2L["29"]["TextXAlignment"] = Enum.TextXAlignment.Left;
 G2L["29"]["TextYAlignment"] = Enum.TextYAlignment.Bottom;
 G2L["29"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["29"]["TextSize"] = 6;
 G2L["29"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 G2L["29"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["29"]["Selectable"] = false;
