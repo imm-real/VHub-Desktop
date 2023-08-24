@@ -11,7 +11,7 @@
 local G2L = {};
 
 -- StarterGui.VHub
-G2L["1"] = Instance.new("ScreenGui");
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["Name"] = [[VHub]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
@@ -1985,6 +1985,7 @@ G2L["e4"]["BackgroundTransparency"] = 0.20000000298023224;
 G2L["e4"]["Size"] = UDim2.new(0, 400, 0, 200);
 G2L["e4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["e4"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["e4"]["Visible"] = false;
 G2L["e4"]["Name"] = [[Loader]];
 
 -- StarterGui.VHub.Loader.UICorner
