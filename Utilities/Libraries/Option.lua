@@ -25,7 +25,7 @@ function Option.load()
 	end
 end
 
-function Option.save(Value)
+function Option:save(Value)
 	local success, error = pcall(function()
 		local Options = {}
 		if isfile('options.vh') then
