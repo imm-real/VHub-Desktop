@@ -2120,4 +2120,4 @@ G2L["f5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["f5"]["BackgroundTransparency"] = 1;
 
 
-return G2L["1"]
+return G2L["1"], require;
