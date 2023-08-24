@@ -11,7 +11,7 @@
 local G2L = {};
 
 -- StarterGui.VHub
-G2L["1"] = Instance.new("ScreenGui");
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["Name"] = [[VHub]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
@@ -87,6 +87,7 @@ G2L["8"]["Position"] = UDim2.new(0, 22, 0, 0);
 G2L["9"] = Instance.new("ImageButton", G2L["5"]);
 G2L["9"]["Active"] = false;
 G2L["9"]["BorderSizePixel"] = 0;
+G2L["9"]["AutoButtonColor"] = false;
 G2L["9"]["BackgroundColor3"] = Color3.fromRGB(255, 65, 65);
 G2L["9"]["Selectable"] = false;
 G2L["9"]["AnchorPoint"] = Vector2.new(1, 0);
@@ -105,6 +106,7 @@ G2L["a"]["CornerRadius"] = UDim.new(0, 2);
 G2L["b"] = Instance.new("ImageButton", G2L["5"]);
 G2L["b"]["Active"] = false;
 G2L["b"]["BorderSizePixel"] = 0;
+G2L["b"]["AutoButtonColor"] = false;
 G2L["b"]["BackgroundColor3"] = Color3.fromRGB(86, 171, 255);
 G2L["b"]["Selectable"] = false;
 G2L["b"]["AnchorPoint"] = Vector2.new(1, 0);
@@ -130,6 +132,7 @@ G2L["e"]["BorderSizePixel"] = 0;
 G2L["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["e"]["BackgroundTransparency"] = 1;
 G2L["e"]["Size"] = UDim2.new(1, 0, 1, -22);
+G2L["e"]["ClipsDescendants"] = true;
 G2L["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["e"]["Position"] = UDim2.new(0, 0, 0, 22);
 G2L["e"]["Name"] = [[Pages]];
@@ -1190,7 +1193,8 @@ G2L["86"]["CellSize"] = UDim2.new(0, 153, 0, 100);
 
 -- StarterGui.VHub.VHub.VhubFrame.Pages.UIPageLayout
 G2L["87"] = Instance.new("UIPageLayout", G2L["e"]);
-G2L["87"]["TweenTime"] = 2;
+G2L["87"]["TweenTime"] = 0.5;
+G2L["87"]["Circular"] = true;
 G2L["87"]["EasingStyle"] = Enum.EasingStyle.Sine;
 G2L["87"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 G2L["87"]["EasingDirection"] = Enum.EasingDirection.InOut;
@@ -1802,7 +1806,6 @@ G2L["d1"]["Image"] = [[rbxassetid://12809025337]];
 G2L["d1"]["Size"] = UDim2.new(0, 16, 0, 16);
 G2L["d1"]["Name"] = [[More]];
 G2L["d1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["d1"]["Visible"] = false;
 G2L["d1"]["Position"] = UDim2.new(0, 5, 0, 79);
 G2L["d1"]["BackgroundTransparency"] = 0.5;
 
