@@ -46,7 +46,7 @@ function Option.save(Value)
 end
 
 function Option.new(Name, CheckFunction)
-	if not _G.Vhub.Options[Name] then return end
+	if not _G.Vhub.options[Name] then return end
 	local self = {
 		name = Name,
 		check_function = CheckFunction
