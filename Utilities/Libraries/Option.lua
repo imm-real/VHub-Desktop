@@ -14,9 +14,9 @@ function Option.load()
 			if not SavedOptions[Option](Value) then continue end
 
 			if Option:sub(0,4) == 'JSON' then
-				_G.Vhub.Options[Options] = HttpService:JSONDecode(Value)
+				_G.Vhub.options[Options] = HttpService:JSONDecode(Value)
 			else
-				_G.Vhub.Options[Option] = Value
+				_G.Vhub.options[Option] = Value
 			end
 		end 
 	end)
