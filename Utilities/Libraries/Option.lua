@@ -7,7 +7,7 @@ local SavedOptions = {}
 
 function Option.load()
 	if not isfile('options.vh') then return end
-	local succes, error = pcall(function() 
+	local success, error = pcall(function() 
 		local Options = HttpService:JSONDecode(readfile('options.vh'))
 		for Option, Value in pairs(Options) do
 			if not SavedOptions[Option] then continue end
@@ -20,13 +20,14 @@ function Option.load()
 			end
 		end 
 	end)
-	if not succes then
+	if not success then
 		warn('[Vhub Error]: '..error)
 	end
 end
 
 function Option.save(Value)
-	local succes, error = pcall(function()
+	print(self)
+	local success, error = pcall(function()
 		local Options = {}
 		if isfile('options.vh') then
 			Options = HttpService:JSONDecode(readfile('options.vh'))
@@ -38,7 +39,7 @@ function Option.save(Value)
 		end
 		writefile('options.vh', HttpService:JSONEncode(Options))
 	end)
-	if not succes then
+	if not success then
 		warn('[Vhub Error]: '..error)
 	end
 end
