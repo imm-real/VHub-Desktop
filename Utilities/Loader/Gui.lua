@@ -1412,7 +1412,7 @@ G2L["a2"]["BackgroundTransparency"] = 1;
 G2L["a3"] = Instance.new("UIScale", G2L["9e"]);
 
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis
 G2L["a4"] = Instance.new("ImageButton", G2L["91"]);
 G2L["a4"]["BorderSizePixel"] = 0;
 G2L["a4"]["ScaleType"] = Enum.ScaleType.Slice;
@@ -1420,20 +1420,20 @@ G2L["a4"]["AutoButtonColor"] = false;
 G2L["a4"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["a4"]["LayoutOrder"] = 2;
 G2L["a4"]["Size"] = UDim2.new(0, 100, 0, 100);
-G2L["a4"]["Name"] = [[Gui]];
+G2L["a4"]["Name"] = [[Guis]];
 G2L["a4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["a4"]["BackgroundTransparency"] = 0.5;
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui.UICorner
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis.UICorner
 G2L["a5"] = Instance.new("UICorner", G2L["a4"]);
 G2L["a5"]["CornerRadius"] = UDim.new(1, 0);
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui.UIStroke
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis.UIStroke
 G2L["a6"] = Instance.new("UIStroke", G2L["a4"]);
 G2L["a6"]["Color"] = Color3.fromRGB(255, 255, 255);
 G2L["a6"]["Thickness"] = 1.7999999523162842;
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui.ImageLabel
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis.ImageLabel
 G2L["a7"] = Instance.new("ImageLabel", G2L["a4"]);
 G2L["a7"]["BorderSizePixel"] = 0;
 G2L["a7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -1444,7 +1444,7 @@ G2L["a7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["a7"]["BackgroundTransparency"] = 1;
 G2L["a7"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui.ImageLabel.Filled
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis.ImageLabel.Filled
 G2L["a8"] = Instance.new("ImageLabel", G2L["a7"]);
 G2L["a8"]["BorderSizePixel"] = 0;
 G2L["a8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -1455,7 +1455,7 @@ G2L["a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["a8"]["Name"] = [[Filled]];
 G2L["a8"]["BackgroundTransparency"] = 1;
 
--- StarterGui.VHub.VHub.VhubFrame.Buttons.Frame.Gui.UIScale
+-- StarterGui.Vhub.Vhub.VhubFrame.Buttons.Frame.Guis.UIScale
 G2L["a9"] = Instance.new("UIScale", G2L["a4"]);
 
 
