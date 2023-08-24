@@ -371,8 +371,7 @@ G2L["29"]["BorderSizePixel"] = 0;
 G2L["29"]["TextXAlignment"] = Enum.TextXAlignment.Left;
 G2L["29"]["TextYAlignment"] = Enum.TextYAlignment.Bottom;
 G2L["29"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-G2L["29"]["TextSize"] = 10;
-G2L["29"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+G2L["29"]["FontFace"] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 G2L["29"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["29"]["Selectable"] = false;
 G2L["29"]["Size"] = UDim2.new(1, 0, 0.30000001192092896, 0);
@@ -458,20 +457,20 @@ G2L["31"]["PaddingRight"] = UDim.new(0, 5);
 G2L["31"]["PaddingBottom"] = UDim.new(0, 5);
 G2L["31"]["PaddingLeft"] = UDim.new(0, 5);
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog
 G2L["32"] = Instance.new("Frame", G2L["f"]);
 G2L["32"]["BorderSizePixel"] = 0;
 G2L["32"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
 G2L["32"]["BackgroundTransparency"] = 0.30000001192092896;
 G2L["32"]["Size"] = UDim2.new(0, 100, 0, 100);
 G2L["32"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["32"]["Name"] = [[Update Log]];
+G2L["32"]["Name"] = [[UpdateLog]];
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.UICorner
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.UICorner
 G2L["33"] = Instance.new("UICorner", G2L["32"]);
 G2L["33"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Title
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Title
 G2L["34"] = Instance.new("TextLabel", G2L["32"]);
 G2L["34"]["BorderSizePixel"] = 0;
 G2L["34"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -485,7 +484,7 @@ G2L["34"]["Name"] = [[Title]];
 G2L["34"]["BackgroundTransparency"] = 1;
 G2L["34"]["Position"] = UDim2.new(0, 0, 0, 3);
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Frame
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Frame
 G2L["35"] = Instance.new("ScrollingFrame", G2L["32"]);
 G2L["35"]["BorderSizePixel"] = 0;
 G2L["35"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
@@ -504,12 +503,12 @@ G2L["35"]["Name"] = [[Frame]];
 G2L["35"]["BottomImage"] = [[rbxassetid://13993227947]];
 G2L["35"]["SelectionGroup"] = false;
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Frame.UIListLayout
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Frame.UIListLayout
 G2L["36"] = Instance.new("UIListLayout", G2L["35"]);
 G2L["36"]["Padding"] = UDim.new(0, 5);
 G2L["36"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Frame.Frame
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Frame.Frame
 G2L["37"] = Instance.new("TextLabel", G2L["35"]);
 G2L["37"]["SizeConstraint"] = Enum.SizeConstraint.RelativeXX;
 G2L["37"]["BorderSizePixel"] = 0;
@@ -524,11 +523,11 @@ G2L["37"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["37"]["Text"] = [[There's Nothing]];
 G2L["37"]["Name"] = [[Frame]];
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Frame.Frame.UICorner
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Frame.Frame.UICorner
 G2L["38"] = Instance.new("UICorner", G2L["37"]);
 G2L["38"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.VHub.VHub.VhubFrame.Pages.Home.Update Log.Frame.Frame.UIPadding
+-- StarterGui.VHub.VHub.VhubFrame.Pages.Home.UpdateLog.Frame.Frame.UIPadding
 G2L["39"] = Instance.new("UIPadding", G2L["37"]);
 G2L["39"]["PaddingTop"] = UDim.new(0, 5);
 G2L["39"]["PaddingRight"] = UDim.new(0, 5);
@@ -2120,4 +2119,4 @@ G2L["f5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["f5"]["BackgroundTransparency"] = 1;
 
 
-return G2L["1"], require;
+return G2L["1"]
